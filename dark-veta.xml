@@ -1,0 +1,1340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='false' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.5.95/css/materialdesignicons.min.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.1.11/dist/vuetify.min.css" rel="stylesheet"/>
+        <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0' name='viewport'/>
+        <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+        <b:include data='blog' name='all-head-content'/>
+
+        <b:if cond='data:blog.pageType == &quot;index&quot;'>
+            <meta content='ブログの説明' name='description'/>
+        </b:if>
+        <meta content='キーワード' name='keywords'/>
+
+        <!-- 検索表示設定 -->
+        <b:if cond='data:blog.pageType == &quot;index&quot; '>
+            <title>
+                <data:blog.pageTitle/>
+            </title>
+            <b:else/>
+            <title>
+                <data:blog.pageName/>
+ -                <data:blog.title/>
+            </title>
+        </b:if>
+        <!-- sns ogp -->
+        <meta content='summary_large_image' name='twitter:card'/>
+        <meta expr:content='data:blog.homepageUrl' name='twitter:domain'/>
+        <b:if cond='data:blog.pageType == &quot;item&quot;'>
+            <meta expr:content='data:blog.canonicalUrl' name='twitter:url'/>
+            <meta expr:content='data:blog.pageName' name='twitter:title'/>
+            <meta expr:content='data:blog.postImageUrl' name='twitter:image:src'/>
+            <b:else/>
+            <meta expr:content='data:blog.homepageUrl' name='twitter:url'/>
+            <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+            <meta content='Image URL' name='twitter:image:src'/>
+        </b:if>
+
+        <!-- 著作表記
+
+  ZELOのテーマおよびソースコードの著作権は Hiro に帰属します&#12290;
+  ZELOのロゴの著作権は Sedge Design に帰属します&#12290;
+  著作権者の許可なく"ZELO"テーマやソースコード&#12289;ロゴ&#12289;またはその一部を使用&#12289;複製&#12289;改変することはできません&#12290;
+
+  You can not use, duplicate or modify "ZELO" theme, source code, logo, parts, without the permission of the copyright owners.
+  Copyright of "ZELO" (C)2018 Hiro
+  Copyright of "ZELO's LOGO"(C)2018 Sedge Design
+  All rights reserved.
+
+  T H A N K S !!!
+
+  ここまで -->
+
+        <b:skin version='1.3.0'><![CDATA[
+/* -----------------------------------------------
+    Blogger Template Style
+    Name: veta
+    Designer: Hiro
+    Creator: Hiro
+    UI: Vuetify
+    URL: https://www.mooovelog.com
+    ----------------------------------------------- */
+
+    /* ----------  common  ---------- */
+    a {
+    text-decoration: none;
+    color: #888;
+    }
+    a:hover {
+    transition: 0.3s;
+    opacity: 0.6;
+    }
+    .svg-icon-24, .svg-icon-24-button {
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    min-width: 24px;
+    }
+    iframe {
+    max-width:100%;
+    }
+    html.dark-mode {
+    mix-blend-mode: difference;
+    filter: brightness(0.67) hue-rotate(180deg);
+    font-weight: 700 !important;
+    }
+
+    /* Glow for dropdown/card-hover*/
+    .dark-mode .v-menu__content,
+    .dark-mode .v-card--hover:hover {
+    box-shadow: 0 5px 20px rgba(142, 255, 252, 0.74);
+}
+
+.dark-mode .logo {
+    filter: brightness(0);
+}
+    /* -----  header  ------*/
+    .header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .widget-content ul {
+        list-style: none;
+    }
+    .title-pass {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #333;
+    }
+    .title-pass a {
+        color: #333!important;
+    }
+    .top-title {
+        font-size: 1.4em!important;
+    }
+    /* -----  main section  ------*/
+    .hfeed {
+    padding: 0!important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    }
+    .index-container {
+        padding-top: 0!important;
+    }
+    .v-card {
+        height: 100%;
+    }
+    .v-card__title {
+        font-weight: bold!important;
+
+    }
+    .v-list-item__title {
+        white-space: normal!important;
+    }
+    .v-responsive__content img {
+        width: 100%!important;
+    }
+    .entry-content .separator a {
+    margin: 0 !important;
+    }
+    .h1-post-title {
+        font-size: 1.4em!important;
+    }
+    .single .entry-content h2 {
+    margin: 1.4em 0;
+    color: #333;
+    }
+    .single .entry-content h3 {
+    margin: 1.4em 0;
+    color: #333;
+    }
+    .single .entry-content h4 {
+    margin: 1.4em 0;
+    color: #333;
+    }
+    .newer-btn {
+    float: left;
+    }
+    .older-btn {
+    float: right;
+    }
+    .sns-btn-wrapper {
+        text-align: center;
+    }
+    .twitter-btn span {
+    color: #55acee;
+    opacity: 0.8;
+    font-weight: bold;
+    }
+    .facebook-btn span {
+    color: #3B5998;
+    opacity: 0.8;
+    font-weight: bold;
+    }
+    .hatebu-btn span {
+    color: #008fde;
+    opacity: 0.8;
+    font-weight: bold;
+    }
+    .line-btn span {
+    color: #00b900;
+    opacity: 0.8;
+    font-weight: bold;
+    }
+    .post-labels a::before {
+    content: '#';
+    color: #1976d2;
+    }
+    /* ----- entry ----- */
+    blockquote {
+    position: relative;
+	padding: 1em 2em;
+    opacity: .8;
+    }
+    .entry-content ul {
+    list-style-type: circle;
+    margin: 24px;
+    }
+    .entry-content ol {
+    list-style-type: decimal;
+    margin: 24px;
+    }
+
+    /* ----- popular post ----- */
+    .underwrapper > .widget-content {
+    padding: 16px 24px;
+    background-color: $(under.color);
+    margin-top: 24px;
+    }
+    .underpost {
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 8px !important;
+    }
+    .entry-content img {
+       max-width: 100%;
+       height: auto;
+    }
+    .under-img img {
+    width: 112px;
+    min-width: 112px;
+    height: 72px;
+    margin-right: 8px;
+    object-fit: cover;
+    }
+    .page-popu .post-title {
+    font-size: 16px;
+    font-weight: bold;
+    }
+    .page-popu .post-title a {
+    color: $(under.font.color);
+    }
+    /* ----- sidebar -----*/
+    .first-items ul, .remaining-items ul {
+    padding-left: 0!important;
+    display: flex;
+    flex-wrap: wrap;
+    }
+    .first-items ul li, .remaining-items ul li {
+        margin-right: .5em;
+    }
+    .first-items ul li::before {
+    content: '#';
+    color: #1976d2;
+    }
+    .remaining-items ul li::before {
+    content: '#';
+    color: #1976d2;
+    }
+
+    /* ----- sidebar -----*/
+    .sidebar > .widget ul,ol, .sidebar-item > .widget ul,ol {
+    list-style: none;
+    }
+    .HTML .widget-content {
+    padding: 0!important;
+    }
+    .post-count::before {
+    content: '(';
+    }
+    .post-count::after {
+    content: ')';
+    }
+    .search-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .show-more, .show-less {
+    display: none;
+    }
+    .individual {
+        text-align: center;
+    }
+    .profile-textblock {
+        text-align: left;
+    }
+    .profile-img {
+        width: 80px;
+        height: 80px;
+        border: 3px solid #c0c0c0; 
+        border-radius: 50%;
+    }
+    /* ----- footer -----*/
+    footer .widget-content {
+        text-align: center;
+    }
+    ]]></b:skin>
+
+    <b:template-skin>
+    <![CDATA[
+    body#layout .centered-top-container {
+    width: 100%;
+    }
+    body#layout .center {
+    float: left;
+    width: 60%;
+    }
+    body#layout .sidebar-container {
+    display: inline-block;
+    width: 40%;
+    }
+    body#layout .footer-section {
+    width: 95%;
+    }
+    ]]>
+        </b:template-skin>
+        <b:defaultmarkups>
+            <b:defaultmarkup type='Common'>
+                <b:includable id='responsiveImage' var='settings'>
+                    <b:comment>Add in the high-res thumb for youtube images.</b:comment>
+                    <b:if cond='not data:settings.image.isYoutube'>
+                        <b:include data='settings' name='super.responsiveImage'/>
+                        <b:else/>
+                        <b:with value='resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl, 1152, &quot;4:3&quot;)' var='highRes'>
+                            <b:include data='{                                  image: data:settings.image,                                  imageSizes: [320,490],                                  sourceSizes: &quot;(max-width: 640px) 100vw, (max-width: 1024px) 576px, 490px&quot;,                                  enhancedSourceset: data:highRes                                }' name='super.responsiveImage'/>
+                        </b:with>
+                    </b:if>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='BlogSearch'>
+                <b:includable id='searchSubmit'>
+                    <b:if cond='data:widget.sectionId == &quot;search_top&quot;'>
+                        <label>
+                            <input type='submit'/>
+                            <b:include data='{ iconClass: &quot;touch-icon search-icon&quot; }' name='searchIcon'/>
+                        </label>
+                        <b:else/>
+                        <b:include name='super.searchSubmit'/>
+                    </b:if>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='AdSense,Blog'>
+                <b:includable id='defaultAdUnit'>
+                    <!-- Clear out style (need non-empty string) -->
+                    <b:with value='&quot;/* Done in css. */&quot;' var='style'>
+                        <b:include name='super.defaultAdUnit'/>
+                    </b:with>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='Blog,FeaturedPost,PopularPosts'>
+                <b:includable id='sharingButtonContent'>
+                    <b:message name='messages.share'/>
+                </b:includable>
+                <b:includable id='postLabels'>
+                    <b:include cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;' name='super.postLabels'/>
+                </b:includable>
+                <b:includable id='headerByline'>
+                    <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
+                        <b:include name='super.headerByline'/>
+                        <b:else/>
+                        <b:include data='{ items: [&quot;author&quot;, &quot;timestamp&quot;] }' name='headerBylineOverride'/>
+                    </b:if>
+                </b:includable>
+                <b:includable id='footerBylines'>
+                    <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
+                        <b:include name='super.footerBylines'/>
+                        <b:else/>
+                        <b:include data='{ items: [[&quot;share&quot;]] }' name='footerBylinesOverride'/>
+                    </b:if>
+                </b:includable>
+                <b:includable id='emailPostIcon'>
+                    <!-- Replace icon with text -->
+                    <span class='byline'>
+                        <a class='flat-button' expr:href='data:post.emailPostUrl'>
+                            <data:messages.emailPost/>
+                        </a>
+                    </span>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='Blog'>
+                <b:includable id='main'>
+                    <b:if cond='not data:posts.any'>
+                        <div class='no-posts'>
+                            <b:eval expr='data:view.isSearch ? data:messages.noResultsFound : data:messages.theresNothingHere'/>
+                        </div>
+                    </b:if>
+
+                    <!-- Display title on homepage -->
+                    <b:if cond='data:posts.any and data:view.isHomepage'>
+                        <h3 class='title'>
+                            <data:messages.latestPosts/>
+                        </h3>
+                    </b:if>
+                    <!-- Filter out the featured post, but only on the homepage. -->
+                    <b:with value='(data:widgets.FeaturedPost filter w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
+                        <b:with value='data:view.isHomepage ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
+                            <b:include name='super.main'/>
+                        </b:with>
+                    </b:with>
+                </b:includable>
+                <b:includable id='post' var='post'>
+                    <b:if cond='data:view.isSingleItem'>
+                        <div class='post-sidebar'>
+                            <b:if cond='data:widgets.Blog.first.allBylineItems.share and data:post.shareUrl'>
+                                <div class='post-sidebar-item post-share-buttons'>
+                                    <b:with value='data:widget.instanceId + &quot;-&quot; + (data:regionName ?: &quot;byline&quot;) + &quot;-&quot; + data:post.id' var='sharingId'>
+                                        <b:include data='{                                                              sharingId: data:sharingId,                                                              originalUrl: data:post.url,                                                              shareUrl: data:post.shareUrl,                                                              platforms: data:blog.sharing.platforms,                                                            }' name='sharingButtons'/>
+                                    </b:with>
+                                </div>
+                            </b:if>
+                            <b:if cond='data:widgets.Blog.first.allBylineItems.labels and data:post.labels'>
+                                <div class='post-sidebar-item post-sidebar-labels'>
+                                    <div>
+                                        <data:messages.labels/>
+                                    </div>
+                                    <ul>
+                                        <b:loop index='i' values='data:post.labels' var='label'>
+                                            <li>
+                                                <a expr:href='data:label.url' rel='tag'>
+                                                    <data:label.name/>
+                                                </a>
+                                            </li>
+                                        </b:loop>
+                                    </ul>
+                                </div>
+                            </b:if>
+                        </div>
+                    </b:if>
+                    <div class='post'>
+                        <b:class cond='data:view.isMultipleItems and data:post.featuredImage' name='has-featured-image'/>
+                        <b:class cond='data:view.isMultipleItems and not data:post.featuredImage' name='no-featured-image'/>
+                        <b:include data='post' name='postMeta'/>
+                        <b:if cond='data:view.isSingleItem'>
+                            <b:include name='headerByline'/>
+                            <b:include data='post' name='postTitle'/>
+                            <div class='post-body-container'>
+                                <b:include data='post' name='postBody'/>
+                            </div>
+                            <b:else/>
+                            <b:if cond='data:post.featuredImage'>
+                                <div class='snippet-thumbnail'>
+                                    <a expr:href='data:post.url'>
+                                        <b:comment>Max width is 576, so max size @ 2x is 1152.</b:comment>
+                                        <b:include data='{                                        image: data:post.featuredImage,                                        imageSizes: [320,490,576,1152],                                        sourceSizes: &quot;(max-width: 576px) 100vw, (max-width: 1024px) 576px, 490px&quot;                                      }' name='responsiveImage'/>
+                                    </a>
+                                    <b:include name='headerByline'/>
+                                </div>
+                                <b:else/>
+                                <b:include name='headerByline'/>
+                            </b:if>
+                            <b:include data='post' name='postTitle'/>
+                        </b:if>
+                        <b:include data='post' name='postFooter'/>
+                    </div>
+                </b:includable>
+                <b:includable id='feedLinks'>
+                    <!-- Don't render -->
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='BlogArchive'>
+                <b:includable id='main' var='this'>
+                    <details class='collapsible extendable'>
+                        <b:attr cond='data:view.isArchive' name='open' value='open'/>
+                        <b:with value='true' var='renderAsDetails'>
+                            <b:with value='data:messages.archive' var='defaultTitle'>
+                                <b:include name='super.main'/>
+                            </b:with>
+                        </b:with>
+                    </details>
+                </b:includable>
+                <b:includable id='flat'>
+                    <b:include data='{                               buttonClass: &quot;flat-button&quot;,                               items: data:this.data,                               itemSet: &quot;data&quot;,                               itemsMarkup: &quot;super.flat&quot;                             }' name='extendableItems'/>
+                </b:includable>
+                <b:includable id='hierarchy'>
+                    <b:include data='{                               buttonClass: &quot;flat-button&quot;,                               limit: 1,                               items: data:this.data,                               itemSet: &quot;data&quot;,                               itemsMarkup: &quot;super.hierarchy&quot;                             }' name='extendableItems'/>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='FeaturedPost'>
+                <b:includable id='main'>
+                    <b:with value='data:messages.featured' var='defaultTitle'>
+                        <b:include name='super.main'/>
+                    </b:with>
+                </b:includable>
+                <b:includable id='snippetedPostContent'>
+                    <b:with value='data:postDisplay.showFeaturedImage and data:post.featuredImage' var='hasImage'>
+                        <div class='post-content'>
+                            <b:class cond='data:hasImage' name='has-featured-image'/>
+                            <b:class cond='not data:hasImage' name='no-featured-image'/>
+
+                            <!-- Change the order and add a snippet container -->
+                            <b:include cond='data:hasImage' data='post' name='snippetedPostThumbnail'/>
+                            <div class='post-text-container'>
+                                <b:include name='headerByline'/>
+                                <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
+                                <b:with value='&quot;featured-post&quot;' var='snippetPrefix'>
+                                    <b:include cond='data:this.postDisplay.showSnippet' data='post' name='postSnippet'/>
+                                </b:with>
+                                <div class='post-footer'>
+                                    <b:include name='footerBylines'/>
+                                    <!-- TODO(sarnesjo): Use the postJumpLink call (in case it's been customized). -->
+                                    <a class='jump-link flat-button' expr:href='data:post.url'>
+                                        <data:messages.readMore/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </b:with>
+                </b:includable>
+                <b:includable id='snippetedPostByline' var='post'>
+                    <b:include name='headerByline'/>
+                </b:includable>
+                <b:includable id='snippetedPostThumbnail'>
+                    <b:include data='{image: data:featuredImage, maxSize: 954, selector: &quot;.hero-thumb&quot;}' name='responsiveImageStyle'/>
+                    <a class='thumb-link' expr:href='data:post.url'>
+                        <div class='thumb hero-thumb'/>
+                    </a>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='Header'>
+                <b:includable id='image'>
+                    <b:include name='super.image'/>
+                    <!-- If we are replacing the title, force it to render anyway, and it'll be hidden in CSS. -->
+                    <b:include cond='data:this.imagePlacement == &quot;REPLACE&quot;' name='title'/>
+                </b:includable>
+                <b:includable id='title'>
+                    <div>
+                        <b:class cond='data:this.imagePlacement == &quot;REPLACE&quot;' name='replaced'/>
+                        <b:include name='super.title'/>
+                    </div>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='Label'>
+                <b:includable id='main' var='this'>
+                                <b:include name='super.main'/>
+                </b:includable>
+                <b:includable id='list'>
+                    <b:include data='{                               buttonClass: &quot;flat-button&quot;,                               items: data:this.labels,                               itemSet: &quot;labels&quot;,                               itemsMarkup: &quot;super.list&quot;                             }' name='extendableItems'/>
+                </b:includable>
+                <b:includable id='cloud'>
+                    <b:include data='{                               buttonClass: &quot;flat-button&quot;,                               items: data:this.labels,                               itemSet: &quot;labels&quot;,                               itemsMarkup: &quot;super.cloud&quot;                             }' name='extendableItems'/>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='PageList'>
+                <b:includable id='content'>
+                    <div class='widget-content'>
+                        <b:if cond='data:widget.sectionId == &quot;page_list_top&quot;'>
+                            <b:include name='overflowablePageList'/>
+                            <b:else/>
+                            <b:include name='pageList'/>
+                        </b:if>
+                    </div>
+                </b:includable>
+                <b:includable id='overflowButton'>
+                    <a>
+                        <data:messages.moreEllipsis/>
+                    </a>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='PopularPosts'>
+                <b:includable id='main'>
+                    <!-- Default the title to 'Popular posts'. -->
+                    <b:with value='data:messages.popularPosts' var='defaultTitle'>
+                        <b:include name='super.main'/>
+                    </b:with>
+                </b:includable>
+                <b:includable id='snippetedPostContent'>
+                    <div class='post'>
+                        <b:class cond='data:post.featuredImage' name='has-featured-image'/>
+                        <b:class cond='not data:post.featuredImage' name='no-featured-image'/>
+                        <b:if cond='data:post.featuredImage'>
+                            <div class='snippet-thumbnail'>
+                                <a expr:href='data:post.url'>
+                                    <b:include data='{                                      image: data:post.featuredImage,                                      imageSizes: [330,660,1320],                                      sourceSizes: &quot;(max-width: 660px) 100vw, 660px&quot;                                    }' name='responsiveImage'/>
+                                </a>
+                                <b:include name='headerByline'/>
+                            </div>
+                            <b:else/>
+                            <b:include name='headerByline'/>
+                        </b:if>
+                        <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
+                        <div class='post-footer'>
+                            <b:include name='footerBylines'/>
+                        </div>
+                    </div>
+                </b:includable>
+            </b:defaultmarkup>
+            <b:defaultmarkup type='Profile'>
+                <b:includable id='main' var='this'>
+                    <!-- Remove widget title -->
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='teamProfileLink'>
+                    <!-- Remove background image, add "Visit profile" message -->
+                    <a class='profile-link g-profile' expr:href='data:userUrl'>
+                        <b:include name='profileImage'/>
+                        <div class='profile-name-wrapper'>
+                            <div class='profile-name'>
+                                <data:display-name/>
+                            </div>
+                            <div class='visit-profile'>
+                                <data:messages.visitProfile/>
+                            </div>
+                        </div>
+                    </a>
+                </b:includable>
+                <b:includable id='userProfileLink'>
+                    <!-- Remove background image -->
+                    <a class='profile-link g-profile' expr:href='data:userUrl' rel='author'>
+                        <data:displayname/>
+                    </a>
+                </b:includable>
+                <b:includable id='viewProfileLink'>
+                    <!-- Change message to "Visit profile" -->
+                    <a class='profile-link' expr:href='data:userUrl' rel='author'>
+                        <data:messages.visitProfile/>
+                    </a>
+                </b:includable>
+                <b:includable id='defaultProfileImage'>
+                    <div class='default-avatar-wrapper'>
+                        <b:include data='{ iconClass: &quot;avatar-icon&quot; }' name='defaultAvatarIcon'/>
+                    </div>
+                </b:includable>
+            </b:defaultmarkup>
+        </b:defaultmarkups>
+
+        <b:if cond='data:blog.adsenseClientId and !data:widgets.AdSense.empty'>
+            <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
+        </b:if>
+        <b:include data='blog' name='google-analytics'/>
+
+        <script async='async' src='https://www.gstatic.com/external_hosted/clipboardjs/clipboard.min.js'/>
+    </head>
+    <!--ここからメインコンテンツ-->
+    <body>
+    <div id="app">
+    <v-app>
+        <b:class cond='data:view.isPreview' name='preview'/>
+        <b:class cond='data:view.isMultipleItems' name='feed-view'/>
+        <b:class cond='data:view.isSingleItem' name='item-view'/>
+        <b:class cond='data:view.isArchive' name='archive-view'/>
+        <b:class cond='data:view.isLabelSearch' name='label-view'/>
+        <b:class cond='data:view.isSearch and !data:view.isLabelSearch' name='search-view'/>
+        <b:class cond='data:view.isError' name='error-view'/>
+        <b:class name='version-1-3-0'/>
+        <v-app-bar>
+        <v-container>
+            <b:section class='header' id='header' showaddelement='yes'>
+              <b:widget id='Header1' locked='false' title='' type='Header' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='displayUrl'/>
+                  <b:widget-setting name='displayHeight'>0</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>-1</b:widget-setting>
+                  <b:widget-setting name='useImage'>false</b:widget-setting>
+                  <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                  <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>0</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main' var='this'>
+    <div class='header-widget'>
+      <b:include cond='data:imagePlacement not in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='title'/>
+    </div>
+  </b:includable>
+                <b:includable id='title'>
+                    <div>
+                        <b:class cond='data:this.imagePlacement == &quot;REPLACE&quot;' name='replaced'/>
+                        <b:if cond='data:view.isSingleItem'>
+                            <span class="title-pass">
+                                <a expr:href='data:blog.homepageUrl'>
+                                    <data:title/>
+                                </a>
+                            </span>
+                            <b:else/>
+                            <h1 class="top-title">
+                                <data:title/>
+                            </h1>
+                        </b:if>
+                    </div>
+                </b:includable>
+              </b:widget>
+            </b:section>
+            </v-container>
+        </v-app-bar>
+        <!--  メインセクション  -->
+        <v-container>
+        <v-layout class="row wrap">
+        <v-flex class="md9">
+        <b:section class='main' id='page_body' name='メイン' showaddelement='false'>
+          <b:widget id='Blog1' locked='true' title='ブログの投稿' type='Blog' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+              <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+              <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+              <b:widget-setting name='authorLabel'>投稿者:</b:widget-setting>
+              <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+              <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+              <b:widget-setting name='showAuthor'>false</b:widget-setting>
+              <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+              <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+              <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+              <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+              <b:widget-setting name='timestampLabel'/>
+              <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+              <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+              <b:widget-setting name='showLabels'>true</b:widget-setting>
+              <b:widget-setting name='showLocation'>false</b:widget-setting>
+              <b:widget-setting name='postLabelsLabel'/>
+              <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+              <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+              <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+              <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+              <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+              <b:widget-setting name='showReactions'>false</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+            <b:class cond='data:view.isMultipleItems' name='index'/>
+            <b:include name='noContentPlaceholder'/>
+            <b:with value='3' var='maxNumAds'>
+                <b:with value='data:widgets.AdSense.size' var='numDesktopAds'>
+                    <b:with value='data:widgets.AdSense count (w =&gt; w.sectionId != &quot;ads&quot;)' var='numMobileAds'>
+                        <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
+                        <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
+                            <b:with value='data:view.isHomepage                                          ? data:posts filter (post =&gt; post.id not in data:featuredPostIds)                                          : data:posts' var='posts'>
+                                <v-container class="index-container grid-list-md fluid">
+                                <v-layout class="row wrap">
+                                <b:include name='super.main'/>
+                                </v-layout>
+                                </v-container>
+                            </b:with>
+                        </b:with>
+                    </b:with>
+                </b:with>
+            </b:with>
+            <b:include cond='data:view.isPost' name='postPagination'/>
+        </b:includable>
+            <b:includable id='aboutPostAuthor'>
+            <div class='author-name'>
+                <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+                    <span>
+                        <data:post.author.name/>
+                    </span>
+                </a>
+            </div>
+            <div>
+                <span class='author-desc'>
+                    <data:post.author.aboutMe/>
+                </span>
+            </div>
+        </b:includable>
+            <b:includable id='defaultAdUnit'>
+            <b:comment>Clear out style (needs to be a non-empty string)</b:comment>
+            <b:with value='&quot;/* Done in css. */&quot;' var='style'>
+                <b:include name='super.defaultAdUnit'/>
+            </b:with>
+        </b:includable>
+            <b:includable id='emailPostIcon'>
+                    <!-- Replace icon with text -->
+                    <span class='byline'>
+                        <a class='flat-button' expr:href='data:post.emailPostUrl'>
+                            <data:messages.emailPost/>
+                        </a>
+                    </span>
+                </b:includable>
+            <b:includable id='feedLinks'>
+            <b:comment>Don&#39;t show feed links.</b:comment>
+        </b:includable>
+            <b:includable id='feedLinksBody' var='links'>
+            <div class='feed-links'>
+                <data:messages.subscribeTo/>
+                <b:loop values='data:links' var='f'>
+                    <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'>
+                        <data:f.name/>
+ (                        <data:f.feedType/>
+)</a>
+                </b:loop>
+            </div>
+        </b:includable>
+            <b:includable id='footerBylines'>
+                    <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
+                        <b:include name='super.footerBylines'/>
+                        <b:else/>
+                        <b:include data='{ items: [[&quot;share&quot;]] }' name='footerBylinesOverride'/>
+                    </b:if>
+                </b:includable>
+            <b:includable id='headerByline'>
+            <b:include name='super.headerByline'/>
+        </b:includable>
+            <b:includable id='homePageLink'>
+            <b:comment>Don&#39;t show</b:comment>
+        </b:includable>
+            <b:includable id='inlineAd' var='post'>
+            <div>
+                <b:class cond='data:post.adNumber + data:numDesktopAds lt data:maxNumAds' name='desktop-ad'/>
+                <b:class cond='data:post.adNumber + data:numMobileAds lt data:maxNumAds' name='mobile-ad'/>
+                <b:include data='post' name='super.inlineAd'/>
+            </div>
+        </b:includable>
+            <b:includable id='nextPageLink'/>
+            <b:includable id='post' var='post'>
+            <!-- 記事の設定 -->
+            <b:if cond='data:view.isSingleItem'>
+                <div class='single'>
+                    <b:include data='post' name='postMeta'/>
+                    <b:include data='post' name='postTitle'/>
+                    <v-card-text class="pt-0">
+                        <b:include data='post' name='postFooter'/>
+                    </v-card-text>
+                    <b:include name='headerByline'/>
+                    <v-card-text class='entry-content body-1'>
+                        <data:post.body/>
+                        <div style='clear: both;'/>
+                    </v-card-text>
+                    <v-card-text>
+                        <v-row class="justify-center">
+                            <b:include data='post' name='shareButtons'/>
+                        </v-row>
+                    </v-card-text>
+                </div>
+                <b:else/>
+                <!-- index要素の設定 -->
+                <a expr:href='data:post.url'>
+                    <b:include data='post' name='postMeta'/>
+                    <b:include data='post' name='postBodySnippet'/>
+                    <b:include data='post' name='postTitle'/>
+                    <v-card-text class="pt-0">
+                    <b:include data='{ items: [&quot;timestamp&quot;] }' name='headerBylineOverride'/>
+                    </v-card-text>
+                </a>
+            </b:if>
+        </b:includable>
+            <b:includable id='postBody' var='post'>
+            <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
+            <div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
+                <data:post.body/>
+            </div>
+        </b:includable>
+            <b:includable id='postBodySnippet' var='post'>
+            <div class='container post-body entry-content' expr:id='&quot;post-snippet-&quot; + data:post.id'>
+
+                <b:if cond='data:post.featuredImage'>
+                    <div class='snippet-thumbnail'>
+                        <a expr:href='data:post.url'>
+                        <v-img>
+                            <b:include data='{image: data:post.featuredImage, imageSizes: [320], imageRatio: &quot;3:2&quot;}' name='responsiveImage'/>
+                        </v-img>
+                        </a>
+                    </div>
+                    <b:else/>
+                    <div class='snippet-thumbnail'>
+                        <a expr:href='data:post.url'>
+                        <v-img>
+                            <img src='http://3.bp.blogspot.com/-l2HXPrf7N9M/XeKHwSXpK6I/AAAAAAAAF0E/vc0yb7Ldf5oEOvfItNG3tREe0fxtpsarwCK4BGAYYCw/s1600/no-image.png'/>
+                        </v-img>
+                        </a>
+                    </div>
+                </b:if>
+            </div>
+        </b:includable>
+            <b:includable id='postCommentsAndAd' var='post'>
+            <!-- post-outer-containerの設定 -->
+            <b:if cond='data:view.isSingleItem'>
+            <v-flex class="col-12">
+            <v-card class="mx-auto">
+                    <article class='post-outer-container'>
+                        <!-- Post title and body -->
+                        <div class='post-outer'>
+                            <b:include data='post' name='post'/>
+                        </div>
+                        <!-- Comments -->
+                        <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+                    </article>
+                    </v-card>
+                    </v-flex>
+                <b:else/>
+                <v-flex class="md6">
+                <v-card class="mx-auto" :hover="true">
+                <article class='post-outer-container'>
+                    <!-- Post title and body -->
+                    <div class='post-outer'>
+                        <b:include data='post' name='post'/>
+                    </div>
+                    <!-- Show ad inside post container, after comments, if single item. -->
+                    <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+                </article>
+                </v-card>
+                </v-flex>
+            </b:if>
+
+            <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
+        </b:includable>
+            <b:includable id='postFooter' var='post'>
+            <div class='post-bottom'>
+                <div class='post-footer float-container'>
+                    <b:include name='footerBylines'/>
+                    <b:include cond='data:widget.type == &quot;Blog&quot;' data='post' name='postFooterAuthorProfile'/>
+                </div>
+                <b:if cond='data:view.isSingleItem'>
+                    <b:else/>
+                    <b:include data='post' name='postFooterJumpLink'/>
+                </b:if>
+            </div>
+        </b:includable>
+            <b:includable id='postFooterAuthorProfile' var='post'>
+            <b:if cond='data:post.author.aboutMe and data:view.isPost'>
+                <div class='author-profile'>
+                    <b:if cond='data:post.author.authorPhoto.url'>
+                        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+                        <div class='author-about'>
+                            <b:include data='post' name='aboutPostAuthor'/>
+                        </div>
+                        <b:else/>
+                        <b:include data='post' name='aboutPostAuthor'/>
+                    </b:if>
+                </div>
+            </b:if>
+        </b:includable>
+            <b:includable id='postFooterJumpLink'>
+            <b:comment>Ripple, and show &#39;keep reading&#39; as the default.</b:comment>
+            <div class='jump-link flat-button ripple'>
+                <a expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+                    <data:blog.jumpLinkMessage/>
+                </a>
+            </div>
+        </b:includable>
+            <b:includable id='postHeader' var='post'>
+            <b:include name='headerByline'/>
+        </b:includable>
+            <b:includable id='postJumpLink'>
+            <b:comment>Overridden, and migrated to postFooter. Called as postFooterJumpLink.</b:comment>
+        </b:includable>
+            <b:includable id='postLabels'>
+            <b:comment>We don&#39;t display labels on the home page.</b:comment>
+            <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
+                <b:include name='super.postLabels'/>
+            </b:if>
+        </b:includable>
+            <b:includable id='postMeta' var='post'>
+            <b:include data='post' name='postMetadataJSON'/>
+        </b:includable>
+            <b:includable id='postPagination'>
+            <div class='blog-pager container' id='blog-pager'>
+            <b:if cond='data:newerPageUrl'>
+            <v-btn class="newer-btn mb-6 white">
+                <b:include cond='data:newerPageUrl' name='super.previousPageLink'/>
+            </v-btn>
+            </b:if>
+            <b:if cond='data:olderPageUrl'>
+            <v-btn class="older-btn mb-6 white">
+                <b:include cond='data:olderPageUrl' name='super.nextPageLink'/>
+            </v-btn>
+            </b:if>
+            </div>
+            <div style='clear: both;'/>
+        </b:includable>
+            <b:includable id='postTitle' var='post'>
+            <a expr:name='data:post.id'/>
+            <b:if cond='data:view.isSingleItem'>
+                        <v-card-title class="title">
+                        <h1 class='h1-post-title'>
+                        <data:post.title/>
+                        </h1>
+                        </v-card-title>
+                <b:else/>
+                        <a expr:href='data:post.link ?: data:post.url'>
+                        <v-card-title class="py-0 subtitle-1">
+                            <data:post.title/>
+                        </v-card-title>
+                        </a>
+            </b:if>
+        </b:includable>
+            <b:includable id='previousPageLink'/>
+            <b:includable id='shareButtons' var='post'>
+            <!-- SNSアイコン -->
+            <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                    <v-row class="col-xs-12 col-md-6">
+                        <v-col class="col-6 sns-btn-wrapper">
+                            <a expr:href='&quot;https://twitter.com/intent/tweet?url=&quot; + data:blog.url + &quot;&amp;text=&quot; + data:post.title' rel='nofollow' target='_blank'>
+                                <v-btn :text="true" class='twitter-btn'>
+                            Twitter
+                                </v-btn>
+                            </a>
+                        </v-col>
+                        <v-col class="col-6 sns-btn-wrapper">
+                            <a expr:href='&quot;https://www.facebook.com/sharer.php?u=&quot; + data:post.url + &quot;&amp;t=&quot; + data:post.title' rel='nofollow' target='_blank'>
+                                <v-btn :text="true" class='facebook-btn'>
+                            Facebook
+                                </v-btn>
+                            </a>
+                        </v-col>
+                    </v-row>
+                    <v-row class="col-xs-12 col-md-6">
+                        <v-col class="col-6 sns-btn-wrapper">
+                            <a expr:href='&quot;https://b.hatena.ne.jp/add?mode=confirm&amp;url=&quot; + data:post.url + &quot;&amp;t=&quot; + data:post.title' rel='nofollow' target='_blank'>
+                                <v-btn :text="true" class='hatebu-btn'>
+                            B!
+                                </v-btn>
+                            </a>
+                        </v-col>
+                        <v-col class="col-6 sns-btn-wrapper">
+                            <a expr:href='&quot;https://line.naver.jp/R/msg/text/&quot; + data:post.url + &quot; &quot; + data:post.title' rel='nofollow' target='_blank'>
+                                <v-btn :text="true" class='line-btn'>
+                            LINE
+                                </v-btn>
+                            </a>
+                        </v-col>
+                    </v-row>
+            </b:if>
+        </b:includable>
+            <b:includable id='sharingButtonContent'>
+                    <b:message name='messages.share'/>
+                </b:includable>
+            <b:includable id='snippetedPostByline'>
+            <b:include name='headerByline'/>
+        </b:includable>
+          </b:widget>
+          <b:widget cond='data:view.isSingleItem' id='HTML1' locked='true' title='' type='HTML' version='2' visible='false'>
+            <b:includable id='main'>
+            <b:include name='widget-title'/>
+            <div class='widget-content'>
+                <data:content/>
+            </div>
+        </b:includable>
+          </b:widget>
+        </b:section>
+        </v-flex>
+        <v-flex class="md3">
+        <v-container class="pt-0">
+                <b:section class='sidebar' id='sidebar_index' name='サイドバー'>
+                <b:widget id='BlogSearch1' locked='false' title='このブログを検索' type='BlogSearch' visible='true'>
+                    <b:includable id='main'>
+                        <v-card class="pa-3 pt-0 mb-3">
+                        <v-card-subtitle class="px-0 subtitle-1">
+                            <b:include name='widget-title'/>
+                        </v-card-subtitle>
+                            <b:include name='content'/>
+                        </v-card>
+                    </b:includable>
+                    <b:includable id='content'>
+                        <div class='widget-content' role='search'>
+                            <b:include name='searchForm'/>
+                        </div>
+                    </b:includable>
+                    <b:includable id='searchForm'>
+                        <form expr:action='data:blog.searchUrl' class="search-container">
+                            <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+                            <b:include name='urlParamsAsFormInput'/>
+                            <div class='search-input'>
+                                <v-text-field autocomplete='off' expr:aria-label='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+                            </div>
+                            <b:include name='searchSubmit'/>
+                        </form>
+                    </b:includable>
+                    <b:includable id='searchSubmit'>
+                    <v-btn :depressed="true" type="submit">検索</v-btn>
+                    </b:includable>
+                </b:widget>
+                <b:widget id='Profile1' locked='false' title='自己紹介' type='Profile' visible='true'>
+                    <b:widget-settings>
+                        <b:widget-setting name='showaboutme'>true</b:widget-setting>
+                        <b:widget-setting name='showlocation'>false</b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main' var='this'>
+                        <v-card class="pa-3 pt-0 mb-3">
+                        <v-card-subtitle class="px-0 subtitle-1">
+                        <b:include name='widget-title'/>
+                        </v-card-subtitle>
+                            <b:include name='content'/>
+                        </v-card>
+                    </b:includable>
+                    <b:includable id='authorProfileImage'>
+                        <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+                    </b:includable>
+                    <b:includable id='content'>
+                        <b:if cond='data:team'>
+                            <div class='widget-content team'>
+                                <b:include name='teamProfile'/>
+                            </div>
+                            <b:else/>
+                            <div class='widget-content individual'>
+                                <b:include name='userProfile'/>
+                            </div>
+                        </b:if>
+                    </b:includable>
+                    <b:includable id='defaultProfileImage'>
+                        <div class='default-avatar-wrapper'>
+                            <b:include data='{ iconClass: &quot;avatar-icon&quot; }' name='defaultAvatarIcon'/>
+                        </div>
+                    </b:includable>
+                    <b:includable id='profileImage'>
+                        <b:if cond='data:authorPhoto.image'>
+                            <b:include name='authorProfileImage'/>
+                            <b:else/>
+                            <b:include name='defaultProfileImage'/>
+                        </b:if>
+                    </b:includable>
+                    <b:includable id='teamProfile'>
+                        <ul>
+                            <b:loop values='data:authors' var='author'>
+                                <li>
+                                    <div class='team-member'>
+                                        <b:include data='author' name='teamProfileLink'/>
+                                    </div>
+                                </li>
+                            </b:loop>
+                        </ul>
+                    </b:includable>
+                    <b:includable id='teamProfileLink'>
+                        <!-- Remove background image, add "Visit profile" message -->
+                        <a class='profile-link g-profile' expr:href='data:userUrl'>
+                            <b:include name='profileImage'/>
+                            <div class='profile-name-wrapper'>
+                                <div class='profile-name'>
+                                    <data:display-name/>
+                                </div>
+                                <div class='visit-profile'>
+                                    <data:messages.visitProfile/>
+                                </div>
+                            </div>
+                        </a>
+                    </b:includable>
+                    <b:includable id='userGoogleProfile'>
+                        <div class='g-follow' data-annotation='bubble' data-height='20' expr:data-href='data:userUrl'/>
+                    </b:includable>
+                    <b:includable id='userLocation'>
+                        <dd class='profile-data location'>
+                            <data:location/>
+                        </dd>
+                    </b:includable>
+                    <b:includable id='userProfile'>
+                        <b:include name='userProfileImage'/>
+                    <v-card-text class="pa-0">
+                        <b:include name='userProfileInfo'/>
+                    </v-card-text>
+                    </b:includable>
+                    <b:includable id='userProfileData'>
+                        <dt class='profile-data'>
+                            <b:include name='userProfileLink'/>
+                            <b:include cond='data:hasgoogleprofile' name='userGoogleProfile'/>
+                        </dt>
+                    </b:includable>
+                    <b:includable id='userProfileImage'>
+                        <a expr:href='data:userUrl' rel='nofollow'>
+                            <b:include name='profileImage'/>
+                        </a>
+                    </b:includable>
+                    <b:includable id='userProfileInfo'>
+                        <div class='profile-info'>
+                            <dl class='profile-datablock'>
+                                <b:class cond='data:showlocation and data:location != &quot;&quot;' name='has-location'/>
+
+                                <b:include name='userProfileData'/>
+                                <b:include cond='data:showlocation and data:location != &quot;&quot;' name='userLocation'/>
+                                <b:include cond='data:aboutme != &quot;&quot;' name='userProfileText'/>
+                            </dl>
+                            <b:include name='viewProfileLink'/>
+                        </div>
+                    </b:includable>
+                    <b:includable id='userProfileLink'>
+                        <!-- Remove background image -->
+                        <a class='profile-link g-profile' expr:href='data:userUrl' rel='author'>
+                            <data:displayname/>
+                        </a>
+                    </b:includable>
+                    <b:includable id='userProfileText'>
+                        <dd class='profile-textblock'>
+                            <data:aboutme/>
+                        </dd>
+                    </b:includable>
+                    <b:includable id='viewProfileLink'>
+                        <!-- Change message to "Visit profile" -->
+                        <a class='profile-link' expr:href='data:userUrl' rel='author'>
+                            <data:messages.visitProfile/>
+                        </a>
+                    </b:includable>
+                </b:widget>
+                  <b:widget id='HTML2' locked='false' title='' type='HTML' visible='true'>
+                    <b:includable id='main'>
+                    <v-card class="pa-3 mb-3">
+                    <v-card-subtitle class="px-0 subtitle-1">
+                    <b:include name='widget-title'/>
+                    </v-card-subtitle>
+                        <div class='widget-content'>
+                            <data:content/>
+                        </div>
+                    </v-card>
+                    </b:includable>
+                  </b:widget>
+                  <b:widget id='Label1' locked='false' title='' type='Label' visible='true'>
+                        <b:widget-settings>
+                            <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+                            <b:widget-setting name='display'>LIST</b:widget-setting>
+                            <b:widget-setting name='selectedLabelsList'/>
+                            <b:widget-setting name='showType'>ALL</b:widget-setting>
+                            <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+                        </b:widget-settings>
+                        <b:includable id='main' var='this'>
+                            <v-card class="pa-3 pt-0 mb-3">
+                                <v-card-subtitle class="px-0 subtitle-1">
+                                    <h3 class="title">タグ</h3>
+                                </v-card-subtitle>
+                                <b:include name='content'/>
+                            </v-card>
+                        </b:includable>
+                        <b:includable id='content'>
+                            <div class='widget-content'>
+                                <b:class expr:name='data:this.display + &quot;-label-widget-content&quot;'/>
+                                <b:include cond='data:this.display == &quot;list&quot;' name='list'/>
+                            </div>
+                        </b:includable>
+                        <b:includable id='list'>
+                            <b:include data='{                               buttonClass: &quot;pill-button&quot;,                               items: data:this.labels,                               itemSet: &quot;labels&quot;,                               itemsMarkup: &quot;super.list&quot;                             }' name='extendableItems'/>
+                        </b:includable>
+                    </b:widget>
+                  <b:widget id='PopularPosts2' locked='false' title='' type='PopularPosts' visible='true'>
+                    <b:widget-settings>
+                      <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+                      <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                      <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                      <b:widget-setting name='timeRange'>LAST_YEAR</b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main'>
+                    <v-card class="pa-3 pt-0 mb-3">
+                    <v-card-subtitle class="px-0 subtitle-1">
+                    <h3 class="title">人気の投稿</h3>
+                    </v-card-subtitle>
+                        <b:include name='super.main'/>
+                    </v-card>
+                </b:includable>
+                    <b:includable id='emailPostIcon'>
+                    <!-- Replace icon with text -->
+                    <span class='byline'>
+                        <a class='flat-button' expr:href='data:post.emailPostUrl'>
+                            <data:messages.emailPost/>
+                        </a>
+                    </span>
+                </b:includable>
+                    <b:includable id='headerByline'>
+                    <b:if cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;'>
+                        <b:include name='super.headerByline'/>
+                        <b:else/>
+                        <b:include data='{ items: [&quot;author&quot;, &quot;timestamp&quot;] }' name='headerBylineOverride'/>
+                    </b:if>
+                </b:includable>
+                    <b:includable id='postLabels'>
+                    <b:include cond='data:view.isSingleItem and data:widget.type == &quot;Blog&quot;' name='super.postLabels'/>
+                </b:includable>
+                    <b:includable id='sharingButtonContent'>
+                    <b:message name='messages.share'/>
+                </b:includable>
+                    <b:includable id='snippetedPostContent'>
+                    <div class='post'>
+                    <v-row class='align-center'>
+                    <v-col class='col-4 pr-0'>
+                        <b:if cond='data:post.featuredImage'>
+                            <div class='popular-snippet-thumbnail'>
+                                <a expr:href='data:post.url'>
+                                <v-img>
+                                    <b:include data='{                                      image: data:post.featuredImage,                                      imageSizes: [330,660,1320],                                      sourceSizes: &quot;(max-width: 660px) 100vw, 660px&quot;                                    }' name='responsiveImage'/>
+                                </v-img>
+                                </a>
+                            </div>
+                        <b:else/>
+                        <div class='popular-snippet-thumbnail'>
+                            <a expr:href='data:post.url'>
+                                <v-img>
+                                    <img src='http://3.bp.blogspot.com/-l2HXPrf7N9M/XeKHwSXpK6I/AAAAAAAAF0E/vc0yb7Ldf5oEOvfItNG3tREe0fxtpsarwCK4BGAYYCw/s1600/no-image.png'/>
+                                </v-img>
+                            </a>
+                        </div>
+                        </b:if>
+                    </v-col>
+                    <v-col class='col-8'>
+                        <v-card-text class="px-0">
+                        <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
+                        <b:include name='headerByline'/>
+                        </v-card-text>
+                    </v-col>
+                    </v-row>
+                    </div>
+                </b:includable>
+                  </b:widget>
+                </b:section>
+    </v-container>
+        </v-flex>
+        </v-layout>
+        </v-container>
+        <v-footer>
+        <v-layout class="justify-center row wrap">
+            <b:section class='footer-section' id='footer' name='フッター' showaddelement='false' tag='footer'>
+              <b:widget id='Attribution1' locked='true' title='' type='Attribution' version='2' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='copyright'>veta</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main' var='this'>
+  <div class='widget-content'>
+    <div class='blogger'>
+      <a expr:href='data:bloggerUrl' rel='nofollow'>
+        <b:include name='flatBloggerIcon'/>
+        <b:message name='messages.poweredByBlogger'/>
+      </a>
+    </div>
+    <b:if cond='data:imageAuthor'>
+      <div class='image-attribution'>
+        <b:if cond='data:imageAuthor.url'>
+          <b:message name='messages.templateImagesByLink'>
+            <b:param expr:value='data:imageAuthor.url'/>
+            <b:param expr:value='data:imageAuthor.name'/>
+          </b:message>
+        <b:else/>
+          <b:message name='messages.templateImagesBy'>
+            <b:param expr:value='data:imageAuthor.name'/>
+          </b:message>
+        </b:if>
+      </div>
+    </b:if>
+    <b:if cond='data:copyright != &quot;&quot;'>
+      <div class='copyright'><data:copyright/></div>
+    </b:if>
+  </div>
+</b:includable>
+              </b:widget>
+            </b:section>
+            </v-layout>
+        </v-footer>
+        </v-app>
+        </div>
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/vuetify@2.1.11/dist/vuetify.js"></script>
+        <script>
+        new Vue({
+        el: '#app',
+        vuetify: new Vuetify({
+            theme: {
+                dark: true,
+            },
+        }),
+        })
+        </script>
+    </body>
+</html>

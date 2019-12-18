@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <b:skin><![CDATA[ ]]></b:skin>
+    </head>
+    <body>
+        <b:section id='content'/>
+    </body>
+</html>
