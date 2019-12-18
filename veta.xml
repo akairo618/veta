@@ -21,8 +21,7 @@
             </title>
             <b:else/>
             <title>
-                <data:blog.pageName/>
- -                <data:blog.title/>
+                <data:blog.pageName/> - <data:blog.title/>
             </title>
         </b:if>
         <!-- sns ogp -->
@@ -40,13 +39,11 @@
 
         <!-- 著作表記
 
-  ZELOのテーマおよびソースコードの著作権は Hiro に帰属します&#12290;
-  ZELOのロゴの著作権は Sedge Design に帰属します&#12290;
-  著作権者の許可なく"ZELO"テーマやソースコード&#12289;ロゴ&#12289;またはその一部を使用&#12289;複製&#12289;改変することはできません&#12290;
+  vetaのテーマおよびソースコードの著作権は Hiro に帰属します&#12290;
+  著作権者の許可なく"veta"テーマやソースコード&#12289;ロゴ&#12289;またはその一部を使用&#12289;複製&#12289;改変することはできません&#12290;
 
-  You can not use, duplicate or modify "ZELO" theme, source code, logo, parts, without the permission of the copyright owners.
-  Copyright of "ZELO" (C)2018 Hiro
-  Copyright of "ZELO's LOGO"(C)2018 Sedge Design
+  You can not use, duplicate or modify "veta" theme, source code, logo, parts, without the permission of the copyright owners.
+  Copyright of "veta" (C)2019 Hiro
   All rights reserved.
 
   T H A N K S !!!
