@@ -38,17 +38,16 @@
         </b:if>
 
         <!-- 著作表記
+        Copyright (c) 2016-2019 John Jeremy Leider
+        Released under the MIT license
+        https://opensource.org/licenses/mit-license.php
 
-  vetaのテーマおよびソースコードの著作権は Hiro に帰属します&#12290;
-  著作権者の許可なく"veta"テーマやソースコード&#12289;ロゴ&#12289;またはその一部を使用&#12289;複製&#12289;改変することはできません&#12290;
+        Copyright (c) 2019 Hiro
+        Released under the MIT license
+        https://opensource.org/licenses/mit-license.php
 
-  You can not use, duplicate or modify "veta" theme, source code, logo, parts, without the permission of the copyright owners.
-  Copyright of "veta" (C)2019 Hiro
-  All rights reserved.
-
-  T H A N K S !!!
-
-  ここまで -->
+        May the FORCE be with you!!
+        -->
 
         <b:skin version='1.3.0'><![CDATA[
 /* -----------------------------------------------
