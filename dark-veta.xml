@@ -288,8 +288,9 @@
         border-radius: 50%;
     }
     /* ----- footer -----*/
-    footer .widget-content {
-        text-align: center;
+    .page-list-wrapper {
+    display: flex;
+    flex-flow: row wrap;
     }
     ]]></b:skin>
 
@@ -1281,42 +1282,43 @@
         </v-layout>
         </v-container>
         <v-footer>
-        <v-layout class="justify-center row wrap">
-            <b:section class='footer-section' id='footer' name='フッター' showaddelement='false' tag='footer'>
-              <b:widget id='Attribution1' locked='true' title='' type='Attribution' version='2' visible='true'>
-                <b:widget-settings>
-                  <b:widget-setting name='copyright'>veta</b:widget-setting>
-                </b:widget-settings>
-                <b:includable id='main' var='this'>
-  <div class='widget-content'>
-    <div class='blogger'>
-      <a expr:href='data:bloggerUrl' rel='nofollow'>
-        <b:include name='flatBloggerIcon'/>
-        <b:message name='messages.poweredByBlogger'/>
-      </a>
-    </div>
-    <b:if cond='data:imageAuthor'>
-      <div class='image-attribution'>
-        <b:if cond='data:imageAuthor.url'>
-          <b:message name='messages.templateImagesByLink'>
-            <b:param expr:value='data:imageAuthor.url'/>
-            <b:param expr:value='data:imageAuthor.name'/>
-          </b:message>
-        <b:else/>
-          <b:message name='messages.templateImagesBy'>
-            <b:param expr:value='data:imageAuthor.name'/>
-          </b:message>
-        </b:if>
-      </div>
-    </b:if>
-    <b:if cond='data:copyright != &quot;&quot;'>
-      <div class='copyright'><data:copyright/></div>
-    </b:if>
-  </div>
-</b:includable>
-              </b:widget>
-            </b:section>
-            </v-layout>
+            <v-container>
+                <b:section class='footer-section' name='フッター' showaddelement='false' id="footer">
+                    <b:widget id='PageList1' locked='true' title='フッターリスト' type='PageList' version='2' visible='true'>
+                        <b:widget-settings>
+                            <b:widget-setting name='pageListJson'><![CDATA[{'home': {'href': '', 'title': 'ホーム', 'position': 0}}]]></b:widget-setting>
+                            <b:widget-setting name='homeTitle'>ホーム</b:widget-setting>
+                        </b:widget-settings>
+                        <b:includable id='main'>
+                            <b:include name='content'/>
+                        </b:includable>
+                        <b:includable id='content'>
+                            <div class='page-list-wrapper'>
+                                <b:class cond='data:pageListClass' expr:name='data:pageListClass'/>
+                                <b:loop values='data:links' var='link'>
+                                    <b:include name='pageLink'/>
+                                </b:loop>
+                            </div>
+                        </b:includable>
+                        <b:includable id='pageLink'>
+                            <div class="pagelist-content pr-4">
+                                <b:class cond='data:link.isCurrentPage' name='selected'/>
+                                <a expr:href='data:link.href'>
+                                    <data:link.title/>
+                                </a>
+                            </div>
+                        </b:includable>
+                        <b:includable id='pageList'>
+                            <ul>
+                                <b:class cond='data:pageListClass' expr:name='data:pageListClass'/>
+                                <b:loop values='data:links' var='link'>
+                                    <b:include name='pageLink'/>
+                                </b:loop>
+                            </ul>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+            </v-container>
         </v-footer>
         </v-app>
         </div>
